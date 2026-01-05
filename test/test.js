@@ -1,24 +1,24 @@
 const http = require('http');
 
 const options = {
-  hostname: 'localhost',
-  port: 3000,
-  path: '/',
-  method: 'GET'
+    hostname: 'localhost',
+    port: 3000,
+    path: '/',
+    method: 'GET'
 };
 
 const req = http.request(options, (res) => {
-  console.log(`STATUS: ${res.statusCode}`);
-  let data = '';
-  res.setEncoding('utf8');
-  res.on('data', (chunk) => { data += chunk; });
-  res.on('end', () => {
-    console.log('BODY:', data);
-  });
+    console.log(`STATUS: ${res.statusCode}`);
+    let data = '';
+    res.setEncoding('utf8');
+    res.on('data', (chunk) => { data += chunk; });
+    res.on('end', () => {
+        console.log('BODY:', data);
+    });
 });
 
 req.on('error', (e) => {
-  console.error(`problem with request: ${e.message}`);
+    console.error(`problem with request: ${e.message}`);
 });
 
 req.end();
